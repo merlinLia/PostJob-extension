@@ -1,0 +1,46 @@
+{
+ 	"manifestVersion": 1,
+ 	"id": "my-first-extension",
+ 	"publisher": "mengdi",
+ 	"version": "1.0.0",
+ 	"name": "My First Extension",
+ 	"description": "A sample Visual Studio Services extension",
+ 	"public": false,
+ 	"categories": ["Azure Repos"],
+ 	"targets": [
+ 		{
+ 			"id": "Microsoft.VisualStudio.Services"
+ 		}
+ 	],
+    "contributions": [
+        {
+            "id": "my-required-task",
+            "type": "ms.azure-pipelines.pipeline-decorator",
+            "targets": [
+                "ms.azure-pipelines-agent-job.post-job-tasks"
+            ],
+            "properties": {
+                "template": "my-decorator.yml"
+            }
+        },
+  
+
+    {
+      "id": "octane-pipeline-end-decorator",
+      "type": "ms.azure-pipelines.pipeline-decorator",
+      "targets": [
+        "ms.azure-pipelines-agent-job.post-job-tasks"
+      ],
+      "properties": {
+        "template": "my-decorator.yml"
+      }
+    }
+    ],
+    "files": [
+        {
+            "path": "my-decorator.yml",
+            "addressable": true,
+            "contentType": "text/plain"
+        }
+    ]
+ }

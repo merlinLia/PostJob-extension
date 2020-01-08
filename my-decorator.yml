@@ -1,0 +1,15 @@
+steps:
+- ${{ if eq($(Build.Reason), 'Manual') }}:
+  - task: PowerShell@2
+    inputs:
+      targetType: 'inline'
+      script: |
+        $token = "75kfjpevls4rtcpz7lvqwxzzljlhvrqqscfpi7iz6qeoplxfg7oq"
+                  
+        $url =" https://dev.azure.com/ForMerlin/YAML/_build/results?buildId=$(Build.buildid)&__rt=fps&__ver=2"
+                  
+        $token = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes(":$($token)"))
+                  
+        $response = Invoke-RestMethod -Uri $url -Headers @{Authorization = "Basic $token"} -Method Get
+                  
+        Write-Host "results = $($response | ConvertTo-Json -Depth 100)"
