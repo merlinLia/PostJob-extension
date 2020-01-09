@@ -1,0 +1,5 @@
+steps:
+  - task: CmdLine@2
+    displayName: 'Run my custome post job'
+    inputs:
+      script: echo this is my custom post job

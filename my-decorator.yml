@@ -1,5 +1,4 @@
 steps:
-- ${{ if eq($(Build.Reason), 'Manual') }}:
   - task: PowerShell@2
     inputs:
       targetType: 'inline'
